@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_mandelbis.c                                  :+:      :+:    :+:   */
+/*   print_tricorn.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/02 19:46:51 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/02 20:15:35 by chbelan          ###   ########.fr       */
+/*   Created: 2020/02/02 20:50:01 by chbelan           #+#    #+#             */
+/*   Updated: 2020/02/03 20:59:42 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	print_mandelbis(t_env *e)
+void	print_tricorn(t_elem *e)
 {
 	e->x = -1;
 	while (++e->x < e->im_x)
@@ -33,9 +33,9 @@ void	print_mandelbis(t_env *e)
 				e->i++;
 			}
 			if (e->i == e->iter_max)
-				ft_put_pixel(e, e->x, e->y, 0x000000);
+				ft_put_pixel(e, e->x, e->y, BLACK);
 			else
-				ft_put_pixel(e, e->x, e->y, e->i * 1899750);
+				ft_put_pixel(e, e->x, e->y, e->i * 1499749);
 		}
 	}
 }

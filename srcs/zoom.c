@@ -6,13 +6,13 @@
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 18:42:11 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/02 20:32:26 by chbelan          ###   ########.fr       */
+/*   Updated: 2020/02/03 20:58:10 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	ft_zoom_out(int x, int y, t_env *e)
+void		zoom_out(int x, int y, t_elem *e)
 {
 	if (e->zoom > 250)
 	{
@@ -28,7 +28,7 @@ static void	ft_zoom_out(int x, int y, t_env *e)
 	}
 }
 
-static void	ft_zoom_in(int x, int y, t_env *e)
+void		zoom_in(int x, int y, t_elem *e)
 {
 	e->zoom *= 2;
 	e->tmpx = e->x1 + x * (e->x2 - e->x1) / (IM_X - 50);
@@ -41,17 +41,17 @@ static void	ft_zoom_in(int x, int y, t_env *e)
 	e->y2 = e->tmpy + (e->y2 - e->tmpy2) / 4;
 }
 
-int			ft_mouse_hook(int keycode, int x, int y, t_env *e)
+int			mouse_hook(int key, int x, int y, t_elem *e)
 {
 	if (!e->check)
-		ft_settings(e);
+		settings(e);
 	if (y > 0 && e->check)
 	{
-		if ((keycode == 1 || keycode == 5) && x <= IM_X)
-			ft_zoom_in(x, y, e);
-		if ((keycode == 2 || keycode == 4) && x <= IM_X)
-			ft_zoom_out(x, y, e);
+		if ((key == 1 || key == 5) && x <= IM_X)
+			zoom_in(x, y, e);
+		if ((key == 2 || key == 4) && x <= IM_X)
+			zoom_out(x, y, e);
 	}
 	e->check = 1;
-	return (0);
+	return (1);
 }

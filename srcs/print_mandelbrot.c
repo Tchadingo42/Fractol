@@ -6,13 +6,13 @@
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/14/01 16:18:10 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/02 20:16:54 by chbelan          ###   ########.fr       */
+/*   Updated: 2020/02/03 20:59:13 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	print_mandelbrot(t_env *e)
+void	print_mandelbrot(t_elem *e)
 {
 	e->x = -1;
 	while (++e->x < e->im_x && e->x < IM_X)
@@ -33,9 +33,9 @@ void	print_mandelbrot(t_env *e)
 				e->i++;
 			}
 			if (e->i == e->iter_max)
-				ft_put_pixel(e, e->x, e->y, 0x000000);
+				ft_put_pixel(e, e->x, e->y, BLACK);
 			else
-				ft_put_pixel(e, e->x, e->y, e->i * 1899750);
+				ft_put_pixel(e, e->x, e->y, e->i * 12345);
 		}
 	}
 }

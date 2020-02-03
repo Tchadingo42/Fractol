@@ -6,13 +6,13 @@
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 19:34:10 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/02 20:18:36 by chbelan          ###   ########.fr       */
+/*   Updated: 2020/02/03 20:59:25 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_put_pixel(t_env *e, int x, int y, int color)
+void	ft_put_pixel(t_elem *e, int x, int y, int color)
 {
 	int	*tmp;
 

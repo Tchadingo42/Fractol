@@ -6,13 +6,13 @@
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 19:47:50 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/02 20:20:03 by chbelan          ###   ########.fr       */
+/*   Updated: 2020/02/03 21:05:50 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_ini_val_mandelbrot(t_env *e)
+void	init_mandelbrot(t_elem *e)
 {
 	e->x1 = -2.1;
 	e->x2 = 0.6;
@@ -24,7 +24,7 @@ void	ft_ini_val_mandelbrot(t_env *e)
 	e->iter_max = 90;
 }
 
-void	ft_ini_val_julia(t_env *e)
+void	init_julia(t_elem *e)
 {
 	e->x1 = -1.6;
 	e->x2 = 1;
@@ -38,7 +38,7 @@ void	ft_ini_val_julia(t_env *e)
 	e->c_i = 0.01;
 }
 
-void	ft_ini_val_mandelbis(t_env *e)
+void	init_tricorn(t_elem *e)
 {
 	e->x1 = -2.1;
 	e->x2 = 1;
@@ -48,4 +48,14 @@ void	ft_ini_val_mandelbis(t_env *e)
 	e->im_x = (e->x2 - e->x1) * e->zoom + 50;
 	e->im_y = (e->y2 - e->y1) * e->zoom;
 	e->iter_max = 90;
+}
+
+void	setup_fractal(t_elem *e)
+{
+	if (!(ft_strcmp(e->arg, "mandelbrot")))
+		init_mandelbrot(e);
+	if (!(ft_strcmp(e->arg, "julia")))
+		init_julia(e);
+	if (!(ft_strcmp(e->arg, "tricorn")))
+		init_tricorn(e);
 }

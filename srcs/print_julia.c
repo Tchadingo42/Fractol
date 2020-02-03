@@ -6,13 +6,13 @@
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 17:42:39 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/02 20:18:42 by chbelan          ###   ########.fr       */
+/*   Updated: 2020/02/03 21:17:51 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	print_julia(t_env *e)
+void	print_julia(t_elem *e)
 {
 	e->x = -1;
 	while (++e->x < e->im_x)
@@ -31,17 +31,17 @@ void	print_julia(t_env *e)
 				e->i++;
 			}
 			if (e->i == e->iter_max)
-				ft_put_pixel(e, e->x, e->y, 0xFFFFFF);
+				ft_put_pixel(e, e->x, e->y, WHITE);
 			else
-				ft_put_pixel(e, e->x, e->y, e->i * 1899750);
+				ft_put_pixel(e, e->x, e->y, e->i * 1899762);
 		}
 	}
 }
 
-int		ft_julia_hook(int x, int y, t_env *e)
+int		julia_hook(int x, int y, t_elem *e)
 {
-	if (!(ft_strcmp(e->av, "julia")) &&
-			x <= IM_X && y <= WIN_Y && x > 0 && y > 0 && e->bj == 0)
+	if (!(ft_strcmp(e->arg, "julia")) &&
+			x <= IM_X && y <= WIN_Y && x > 0 && y > 0)
 	{
 		e->c_r = (float)(x + 400 - IM_X) / 300;
 		e->c_i = (float)(y + 320 - WIN_Y) / 300;

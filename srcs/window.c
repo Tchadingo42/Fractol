@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arguments.c                                  :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/02 18:39:50 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/02 18:47:34 by chbelan          ###   ########.fr       */
+/*   Created: 2020/02/01 17:09:40 by chbelan           #+#    #+#             */
+/*   Updated: 2020/02/03 21:21:56 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int			check_arguments(void)
+int		window(t_elem *e)
 {
-	t_env	elem;
-
-	if (!(ft_strcmp(elem.av, "mandelbrot") || (ft_strcmp(elem.av, "julia"))))
-	{
-		ft_putstr("Invalid fractal\n");
-		exit(-1);
-	}
-	return (0);
+	if (e->check == 0)
+		return (-1);
+	mlx_destroy_image(e->mlx, e->im);
+	e->im = mlx_new_image(e->mlx, IM_X, WIN_Y);
+	key_action(e);
+	print_fractal(e);
+	mlx_put_image_to_window(e->mlx, e->win, e->im, 0, 0);
+	return (1);
 }

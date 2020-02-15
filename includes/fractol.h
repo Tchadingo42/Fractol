@@ -6,7 +6,7 @@
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/14/02 15:17:05 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/03 21:21:02 by chbelan          ###   ########.fr       */
+/*   Updated: 2020/02/15 19:17:47 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@
 # define LEFT 123
 # define RIGHT 124
 # define KEY_PRESS 2
-# define KEY_RELEASE 3
-# define MOTION 6
+# define MOVEMENT  6
 # define ESC 53
 # define PLUS 69
 # define MINUS 78
@@ -35,12 +34,11 @@
 # define TWO 19
 # define THREE 20
 # define COMMANDS   "          COMMANDS         "
-# define C_CLICK	"	    Click to zoom	    "
-# define C_PLUS	    "    Add iter  |     +      "
-# define C_MINUS    "    Sub iter  |     -      "
-# define C_ZERO     "    Reset     |     0      "
-# define C_CHOOSE   "    Choose    |	  1-2-3 "
-# define C_EXIT     "    Exit      |	   ESC  "
+# define C_CLICK	"	     Click to zoom      "
+# define C_PLUS	    "    Add iter  |    +       "
+# define C_MINUS    "    Sub iter  |    -		"
+# define C_CHOOSE   "    Choose    |    1-2-3   "
+# define C_EXIT     "    Exit      |    ESC     "
 
 typedef struct	s_elem
 {
@@ -49,22 +47,21 @@ typedef struct	s_elem
 	char		*arg;
 	void		*im;
 	char		*imc;
-	int			check;
 	int			bpp;
 	int			imlen;
 	int			endi;
 	int			i;
 	int			x;
 	int			y;
+	int			checker;
 	int			iter_max;
 	int			im_x;
 	int			im_y;
 	int			itm;
-	int			reset;
-	float		y1;
-	float		y2;
 	float		x1;
 	float		x2;
+	float		y1;
+	float		y2;
 	float		c_r;
 	float		c_i;
 	float		z_r;
@@ -80,8 +77,9 @@ typedef struct	s_elem
 
 }				t_elem;
 
+void			invalid_arguments(void);
 void			program(t_elem e);
-void			print_fractal(t_elem *e);
+void			print_fractal(t_elem *elem);
 void			setup_fractal(t_elem *e);
 int				check_arguments(void);
 void			init_mandelbrot(t_elem *e);
@@ -90,9 +88,8 @@ void			init_tricorn(t_elem *e);
 void			print_mandelbrot(t_elem *e);
 void			print_julia(t_elem *e);
 void			print_tricorn(t_elem *e);
-int				key_init(int key, t_elem *e);
-int				key_release(int key, t_elem *e);
-void			key_action(t_elem *e);
+int				key_init(int key, t_elem *elem);
+void			key_iteration(t_elem *elem);
 void			ft_put_pixel(t_elem *e, int x, int y, int color);
 void			settings(t_elem *e);
 int				julia_hook(int x, int y, t_elem *e);
@@ -100,7 +97,7 @@ void			put_help(t_elem e);
 void			setup_window(t_elem *e);
 void			zoom_out(int x, int y, t_elem *e);
 void			zoom_in(int x, int y, t_elem *e);
-int				mouse_hook(int key, int x, int y, t_elem *e);
-int				window(t_elem *e);
+int				mouse_hook(int key, int x, int y, t_elem *elem);
+int				window(t_elem *elem);
 
 #endif

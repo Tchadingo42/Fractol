@@ -6,7 +6,7 @@
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 19:47:50 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/03 21:05:50 by chbelan          ###   ########.fr       */
+/*   Updated: 2020/02/15 19:00:03 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_mandelbrot(t_elem *e)
 	e->zoom = 250;
 	e->im_x = (e->x2 - e->x1) * e->zoom + 150 + WIN_X - IM_X;
 	e->im_y = (e->y2 - e->y1) * e->zoom;
-	e->iter_max = 90;
+	e->iter_max = 100;
 }
 
 void	init_julia(t_elem *e)
@@ -33,7 +33,7 @@ void	init_julia(t_elem *e)
 	e->zoom = 250;
 	e->im_x = (e->x2 - e->x1) * e->zoom + 150;
 	e->im_y = (e->y2 - e->y1) * e->zoom;
-	e->iter_max = 90;
+	e->iter_max = 100;
 	e->c_r = 0.285;
 	e->c_i = 0.01;
 }
@@ -47,7 +47,7 @@ void	init_tricorn(t_elem *e)
 	e->zoom = 250;
 	e->im_x = (e->x2 - e->x1) * e->zoom + 50;
 	e->im_y = (e->y2 - e->y1) * e->zoom;
-	e->iter_max = 90;
+	e->iter_max = 100;
 }
 
 void	setup_fractal(t_elem *e)

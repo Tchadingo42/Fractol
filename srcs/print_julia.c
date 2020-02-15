@@ -6,7 +6,7 @@
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 17:42:39 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/03 21:17:51 by chbelan          ###   ########.fr       */
+/*   Updated: 2020/02/15 19:46:03 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_julia(t_elem *e)
 			if (e->i == e->iter_max)
 				ft_put_pixel(e, e->x, e->y, WHITE);
 			else
-				ft_put_pixel(e, e->x, e->y, e->i * 1899762);
+				ft_put_pixel(e, e->x, e->y, e->i * 1899767);
 		}
 	}
 }

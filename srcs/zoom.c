@@ -6,7 +6,7 @@
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 18:42:11 by chbelan           #+#    #+#             */
-/*   Updated: 2020/02/03 20:58:10 by chbelan          ###   ########.fr       */
+/*   Updated: 2020/02/15 19:13:54 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ void		zoom_in(int x, int y, t_elem *e)
 	e->y2 = e->tmpy + (e->y2 - e->tmpy2) / 4;
 }
 
-int			mouse_hook(int key, int x, int y, t_elem *e)
+int			mouse_hook(int key, int x, int y, t_elem *elem)
 {
-	if (!e->check)
-		settings(e);
-	if (y > 0 && e->check)
+	if (!elem->checker)
+		settings(elem);
+	if (y > 0 && elem->checker)
 	{
 		if ((key == 1 || key == 5) && x <= IM_X)
-			zoom_in(x, y, e);
+			zoom_in(x, y, elem);
 		if ((key == 2 || key == 4) && x <= IM_X)
-			zoom_out(x, y, e);
+			zoom_out(x, y, elem);
 	}
-	e->check = 1;
+	elem->checker = 1;
 	return (1);
 }

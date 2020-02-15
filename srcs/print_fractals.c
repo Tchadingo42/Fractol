@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   print_fractals.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chbelan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/03 16:17:39 by chbelan           #+#    #+#             */
-/*   Updated: 2020/01/15 18:35:26 by chbelan          ###   ########.fr       */
+/*   Created: 2020/02/15 18:48:12 by chbelan           #+#    #+#             */
+/*   Updated: 2020/02/15 19:32:32 by chbelan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fractol.h"
 
-int		ft_abs(int n)
+void	print_fractal(t_elem *elem)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
-}	
+	if (!(ft_strcmp(elem->arg, "mandelbrot")))
+		print_mandelbrot(elem);
+	if (!(ft_strcmp(elem->arg, "julia")))
+		print_julia(elem);
+	if (!(ft_strcmp(elem->arg, "tricorn")))
+		print_tricorn(elem);
+}
